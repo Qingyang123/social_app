@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Scream from '../components/Scream';
+
 // MUI
 import Grid from '@material-ui/core/Grid';
 
@@ -13,16 +15,16 @@ class Home extends Component {
     componentDidMount() {
         axios.get('/screams')
             .then(res => {
-                console.log(res.data)
                 this.setState({
                     screams: res.data
                 })
             })
             .catch(err => console.log(err));
     }
+
     render() {
         let recentScreamsMarkup = this.state.screams ? (
-            this.state.screams.map(scream => <p>{ scream.body }</p>)
+            this.state.screams.map(scream => <Scream scream={scream}/>)
         ) : <p>Loading ...</p>
         return (
             <Grid container>
