@@ -21,58 +21,56 @@ import LinkIcon from '@material-ui/icons/Link';
 
 const styles = {
     paper: {
-        padding: 20
+        padding: 20,
+        marginLeft: 20
     },
     profile: {
         '& .image-wrapper': {
-          textAlign: 'center',
-          position: 'relative',
-          width: 200,
-          height: 200,
-          '& button': {
-            position: 'absolute',
-            top: '80%',
-            left: '70%'
-          }
+            textAlign: 'center',
+            position: 'relative',
+            width: 200,
+            height: 200,
+            '& button': {
+                position: 'absolute',
+                top: '80%',
+                left: '70%'
+            }
         },
         '& .profile-image': {
-        //   width: 200,
-        //   height: 200,
-        //   objectFit: 'cover',
-        //   maxWidth: '100%',
-        //   borderRadius: '50%'
-            width: '50%',
-            height: '50%'
+            width: 200,
+            height: 200,
+            objectFit: 'cover',
+            maxWidth: '100%',
+            borderRadius: '50%'
         },
         '& .profile-details': {
-          textAlign: 'center',
-          '& span, svg': {
-            verticalAlign: 'middle'
-          },
-          '& a': {
-            color: '#00bcd4'
-          }
+            textAlign: 'center',
+            '& span, svg': {
+                verticalAlign: 'middle'
+            },
+            '& a': {
+                color: '#00bcd4'
+            }
         },
         '& hr': {
-          border: 'none',
-          margin: '0 0 10px 0'
+            border: 'none',
+            margin: '0 0 10px 0'
         },
         '& svg.button': {
-          '&:hover': {
-            cursor: 'pointer'
-          }
+            '&:hover': {
+                cursor: 'pointer'
+            }
         }
-      },
-      buttons: {
+    },
+    buttons: {
         textAlign: 'center',
         '& a': {
-          margin: '20px 10px'
+            margin: '20px 10px'
         }
-      }
+    }
 }
 class Profile extends Component {
     render() {
-        console.log('here');
         const { 
             classes, 
             user: { 
@@ -81,13 +79,12 @@ class Profile extends Component {
                 authenticated
             } 
         } = this.props;
-        console.log(handle, createdAt, imageUrl, bio, website, location);
 
         let profileMarkup = !loading ? (authenticated ? (
             <Paper className={classes.paper}>
                 <div className={classes.profile}>
-                    <div className='profile-image'>
-                        <img src={imageUrl} alt='profile'/>
+                    <div className='image-wrapper'>
+                        <img src={imageUrl} alt='profile' className='profile-image'/>
                     </div>
                     <hr/>
                     <div className='profile-details'>
