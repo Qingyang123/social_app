@@ -4,8 +4,13 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import jwtDecode from 'jwt-decode';
 
+// Redux
+import { Provider } from 'react-redux'
+import store from './redux/store';
+
 // Components
 import Navbar from './components/Navbar';
+import AuthRoute from './util/AuthRoute';
 import themeFile from './util/theme';
 
 // Pages
@@ -32,18 +37,18 @@ if (token) {
 function App() {
 	return (
 		<MuiThemeProvider theme={theme}>
-			<div className="App">
+			<Provider store={store}>
 				<BrowserRouter>
 					<Navbar/>
 					<div className='container'>
 						<Switch>
 							<Route exact path='/' component={Home}/>
-							<Route exact path='/login' component={Login}/>
-							<Route exact path='/signup' component={Signup}/>
+							<AuthRoute exact path='/login' component={Login} authenticated={authenticated}/>
+							<AuthRoute exact path='/signup' component={Signup} authenticated={authenticated}/>
 						</Switch>
 					</div>
 				</BrowserRouter>
-			</div>
+			</Provider>
 		</MuiThemeProvider>
 	);
 }
