@@ -23,8 +23,10 @@ class Home extends Component {
     }
 
     render() {
+        console.log(typeof(this.state.screams));
+        console.log(this.state.screams)
         let recentScreamsMarkup = this.state.screams ? (
-            this.state.screams.map(scream => <Scream scream={scream}/>)
+            this.state.screams.map(scream => <Scream scream={scream} key={scream.screamId}/>)
         ) : <p>Loading ...</p>
         return (
             <Grid container>
