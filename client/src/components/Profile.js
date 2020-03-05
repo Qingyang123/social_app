@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import EditDetails from './EditDetails';
+import MyButton from '../util/MyButton';
 
 // MUI
 import { Button, Paper, Typography, IconButton, Tooltip } from '@material-ui/core';
@@ -18,60 +19,13 @@ import EditIcon from '@material-ui/icons/Edit';
 // Redux
 import { uploadImage, logoutUser } from '../redux/actions/userActions';
 
-// const styles = (theme) => ({
-//     ...theme.paper,
-//     ...theme.profile,
-//     ...theme.buttons
-// })
+const styles = (theme) => ({
+    paper: theme.paper,
+    profile: theme.profile,
+    buttons: theme.buttons
+})
 
-const styles = {
-    paper: {
-        padding: 20,
-        marginLeft: 20
-    },
-    profile: {
-        '& .image-wrapper': {
-            textAlign: 'center',
-            position: 'relative',
-            '& button': {
-                position: 'absolute',
-                top: '80%',
-                left: '70%'
-            }
-        },
-        '& .profile-image': {
-            width: 200,
-            height: 200,
-            objectFit: 'cover',
-            maxWidth: '100%',
-            borderRadius: '50%'
-        },
-        '& .profile-details': {
-            textAlign: 'center',
-            '& span, svg': {
-                verticalAlign: 'middle'
-            },
-            '& a': {
-                color: '#00bcd4'
-            }
-        },
-        '& hr': {
-            border: 'none',
-            margin: '0 0 10px 0'
-        },
-        '& svg.button': {
-            '&:hover': {
-                cursor: 'pointer'
-            }
-        }
-    },
-    buttons: {
-        textAlign: 'center',
-        '& a': {
-            margin: '20px 10px'
-        }
-    }
-}
+
 class Profile extends Component {
 
     handleImageChange = (event) => {
@@ -107,11 +61,10 @@ class Profile extends Component {
                     <div className='image-wrapper'>
                         <img src={imageUrl} alt='profile' className='profile-image'/>
                         <input type='file' id='imageInput' hidden='hidden' onChange={this.handleImageChange} />
-                        <Tooltip title="Edit profile picture" placement='top'>
-                            <IconButton onClick={this.handleEditPicture} className='button'>
-                                <EditIcon color='primary'/>
-                            </IconButton>
-                        </Tooltip>
+
+                        <MyButton tip='Edit profile picture' onClick={this.handleEditPicture} btnClassName='button'>
+                            <EditIcon color='primary'/>
+                        </MyButton>
                     </div>
                     <hr/>
                     <div className='profile-details'>
@@ -139,11 +92,10 @@ class Profile extends Component {
                         <CalendarToday color='primary'/>{' '}
                         <span>Joined { dayjs(createdAt).format('MM YYYY') }</span>
                     </div>
-                    <Tooltip title='Logout' placement='top'>
-                        <IconButton onClick={this.handleLogout}>
-                            <KeyboardReturn color='primary'/>
-                        </IconButton>
-                    </Tooltip>
+
+                    <MyButton tip='Logout' onClick={this.handleLogout}>
+                        <KeyboardReturn color='primary'/>
+                    </MyButton>
                     <EditDetails/>
                 </div>
             </Paper>

@@ -42,11 +42,12 @@ export default {
 			position: 'absolute'
 		}
 	},
-	paper: {
-        padding: 20
+    paper: {
+        padding: 20,
+        marginLeft: 20
     },
     profile: {
-        '& .image_wrapper': {
+        '& .image-wrapper': {
             textAlign: 'center',
             position: 'relative',
             '& button': {
