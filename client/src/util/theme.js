@@ -86,5 +86,13 @@ export default {
         '& a': {
             margin: '20px 10px'
         }
+    },
+    button: {
+        marginTop: 20,
+        position: 'relative',
+        float: 'right'
+    },
+    textField: {
+        margin: '10px auto 10px auto'
     }
 }
