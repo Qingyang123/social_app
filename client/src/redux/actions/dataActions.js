@@ -40,3 +40,13 @@ export const unlikeScream = (screamId) => dispatch => {
         })
         .catch(err => console.log(err))
 }
+
+
+// Delete a scream
+export const deleteScream = (screamId) => dispatch => {
+    axios.delete(`/scream/${screamId}`)
+        .then(() => {
+            dispatch({ type: actionTypes.DELETE_SCREAM, payload: screamId })
+        })
+        .catch(err => console.log(err))
+}

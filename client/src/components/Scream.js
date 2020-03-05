@@ -6,6 +6,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 
 import MyButton from '../util/MyButton';
+import DeleteScream from './DeleteScream';
 
 // MUI
 import Card from '@material-ui/core/Card';
@@ -24,6 +25,7 @@ import { likeScream, unlikeScream } from '../redux/actions/dataActions';
 
 const styles = {
     card: {
+        position: 'relative',
         display: 'flex',
         marginBottom: 20
     },
@@ -62,7 +64,7 @@ class Scream extends Component {
         dayjs.extend(relativeTime);
         const { classes, 
                 scream : { body, createdAt, userImage, userHandle, screamId, likeCount, commentCount },
-                user: { authenticated }
+                user: { authenticated, credentials: { handle } }
               } = this.props;
 
         const likeButton = !authenticated ? (
@@ -75,6 +77,11 @@ class Scream extends Component {
             )
         )
         
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteScream screamId={screamId}/>
+        ) : null
+
+
         return (
             <Card className={classes.card}>
                 <CardMedia image={userImage} title="Profile image" className={classes.image}/>
@@ -83,14 +90,15 @@ class Scream extends Component {
                                 component={Link} 
                                 to={`/users/${userHandle}`}
                                 color='primary'>{ userHandle }</Typography>
+                    { deleteButton }
                     <Typography variant='body2' color='textSecondary'>{ dayjs(createdAt).fromNow() }</Typography>
                     <Typography variant='body1'>{ body }</Typography>
                     {likeButton}
-                    <span>{likeCount} Likes</span>
+                    <span>{ likeCount}  Likes</span>
                     <MyButton tip='comments'>
                         <ChatIcon color='primary'/>
                     </MyButton>
-                    <span>{commentCount} Comments</span>
+                    <span>{ commentCount } Comments</span>
                 </CardContent>
             </Card>
         )

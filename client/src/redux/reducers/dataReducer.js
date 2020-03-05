@@ -21,13 +21,22 @@ export default function(state = initialState, action) {
             }
         case actionTypes.LIKE_SCREAM:
         case actionTypes.UNLIKE_SCREAM:
-            let index = state.screams.findIndex(
+            let index1 = state.screams.findIndex(
                 (scream) => scream.screamId === action.payload.screamId
             );
-            state.screams[index] = action.payload;
+            state.screams[index1] = action.payload;
             if (state.scream.screamId === action.payload.screamId) {
                 state.scream = action.payload;
             }
+            return {
+                ...state
+            };
+        case actionTypes.DELETE_SCREAM:
+            let index2 = state.screams.findIndex(
+                (scream) => scream.screamId === action.payload
+            );
+            state.screams.splice(index2, 1);
+            console.log(state);
             return {
                 ...state
             };
