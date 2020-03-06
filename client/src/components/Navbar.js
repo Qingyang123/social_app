@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MyButton from '../util/MyButton';
+import PostScream from '../components/PostScream';
 
 // MUI
 import AppBar from '@material-ui/core/AppBar';
@@ -23,7 +24,8 @@ class Navbar extends Component {
                     {
                         authenticated ? (
                             <Fragment>
-                                <MyButton tip='Post a Scream'><AddIcon/></MyButton>
+                                <PostScream/>
+                                {/* <MyButton tip='Post a Scream'><AddIcon/></MyButton> */}
                                 <Link to='/'>
                                     <MyButton tip='Home'><HomeIcon/></MyButton>
                                 </Link>

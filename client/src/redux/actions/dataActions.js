@@ -50,3 +50,42 @@ export const deleteScream = (screamId) => dispatch => {
         })
         .catch(err => console.log(err))
 }
+
+
+// Post a scream
+export const postScream = (newScream) => dispatch => {
+    dispatch({ type: actionTypes.LOADING_UI });
+    axios.post('/scream', newScream)
+        .then(res => {
+            dispatch({
+                type: actionTypes.POST_SCREAM,
+                payload: res.data
+            });
+            dispatch({ type: actionTypes.CLEAR_ERRORS });
+        })
+        .catch(err => {
+            dispatch({
+                type: actionTypes.SET_ERRORS,
+                payload: err.response.data
+            });
+        })
+}
+
+
+export const getScream = (screamId) => dispatch => {
+    dispatch({ type: actionTypes.LOADING_UI });
+    axios.get(`/scream/${screamId}`)
+        .then(res => {
+            dispatch({
+                type: actionTypes.SET_SCREAM,
+                payload: res.data
+            });
+            dispatch({ type: actionTypes.STOP_LOADING_UI });
+        })
+        .catch(err => console.log(err));
+}
+
+
+export const clearErrors = () => dispatch => {
+    dispatch({ type: actionTypes.CLEAR_ERRORS });
+}

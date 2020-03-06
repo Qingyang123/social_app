@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://us-central1-socialmediapp-603a4.cloudfunctions.net/api",
+  "proxy": "https://us-central1-social-app-f23ce.cloudfunctions.net/api",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",
