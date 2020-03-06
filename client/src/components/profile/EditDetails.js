@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 
 // MUI
@@ -13,7 +13,7 @@ import { Button, Tooltip, IconButton, TextField, Dialog, DialogActions, DialogCo
 import EditIcon from '@material-ui/icons/Edit';
 
 // Redux
-import { editUserDetails } from '../redux/actions/userActions';
+import { editUserDetails } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
     ...theme.button,

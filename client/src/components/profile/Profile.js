@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import EditDetails from './EditDetails';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 // MUI
 import { Button, Paper, Typography, IconButton, Tooltip } from '@material-ui/core';
@@ -17,7 +17,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import EditIcon from '@material-ui/icons/Edit';
 
 // Redux
-import { uploadImage, logoutUser } from '../redux/actions/userActions';
+import { uploadImage, logoutUser } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
     paper: theme.paper,

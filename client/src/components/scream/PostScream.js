@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 // MUI
 import { Button, Dialog, DialogTitle, DialogActions, CircularProgress, DialogContent, TextField } from '@material-ui/core';
@@ -13,7 +13,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 // Redux
 import { connect } from 'react-redux';
-import { postScream, clearErrors } from '../redux/actions/dataActions';
+import { postScream, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
     ...theme.textField,
