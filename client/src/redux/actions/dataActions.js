@@ -61,7 +61,7 @@ export const postScream = (newScream) => dispatch => {
                 type: actionTypes.POST_SCREAM,
                 payload: res.data
             });
-            dispatch({ type: actionTypes.CLEAR_ERRORS });
+            dispatch(clearErrors());
         })
         .catch(err => {
             dispatch({
@@ -71,7 +71,7 @@ export const postScream = (newScream) => dispatch => {
         })
 }
 
-
+// Get the scream info when you click a scream
 export const getScream = (screamId) => dispatch => {
     dispatch({ type: actionTypes.LOADING_UI });
     axios.get(`/scream/${screamId}`)
@@ -83,6 +83,25 @@ export const getScream = (screamId) => dispatch => {
             dispatch({ type: actionTypes.STOP_LOADING_UI });
         })
         .catch(err => console.log(err));
+}
+
+
+// Submit comment
+export const submitComment = (screamId, commentData) => dispatch => {
+    axios.post(`/scream/${screamId}/comment`, commentData)
+        .then(res => {
+            dispatch({
+                type: actionTypes.SUBMIT_COMMENT,
+                payload: res.data
+            })
+            dispatch(clearErrors());
+        })
+        .catch(err => {
+            dispatch({
+                type: actionTypes.SET_ERRORS,
+                payload: err.response.data
+            })
+        })
 }
 
 

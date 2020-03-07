@@ -58,6 +58,17 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: false
             }
+        case actionTypes.SUBMIT_COMMENT:
+            return {
+                ...state,
+                scream: {
+                    ...state.scream,
+                    comments: [
+                        action.payload,
+                        ...state.scream.comments
+                    ]
+                }
+            }
         default:
             return state
     }
