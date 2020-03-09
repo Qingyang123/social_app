@@ -105,6 +105,24 @@ export const submitComment = (screamId, commentData) => dispatch => {
 }
 
 
+export const getUserData = (userHandle) => dispatch => {
+    dispatch({ type: actionTypes.LOADING_DATA });
+    axios.get(`/user/${userHandle}`)
+        .then(res => {
+            dispatch({
+                type: actionTypes.SET_SCREAMS,
+                payload: res.data.screams
+            });
+        })
+        .catch(err => {
+            dispatch({
+                type: actionTypes.SET_SCREAMS,
+                payload: null
+            })
+        })
+}
+
+
 export const clearErrors = () => dispatch => {
     dispatch({ type: actionTypes.CLEAR_ERRORS });
 }
