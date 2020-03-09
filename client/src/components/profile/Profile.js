@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import EditDetails from './EditDetails';
 import MyButton from '../../util/MyButton';
+import ProfileSkeleton from '../../util/ProfileSkeleton';
 
 // MUI
 import { Button, Paper, Typography, IconButton, Tooltip } from '@material-ui/core';
@@ -109,7 +110,7 @@ class Profile extends Component {
                     </div>
                 </Typography>
             </Paper>
-        )) : (<p>loading ...</p>)
+        )) : (<ProfileSkeleton/>)
         return profileMarkup;
     }
 }
